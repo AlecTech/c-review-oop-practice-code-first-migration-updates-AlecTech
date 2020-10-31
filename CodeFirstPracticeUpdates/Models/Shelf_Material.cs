@@ -9,12 +9,12 @@ namespace CodeFirstPracticeUpdates.Models
     [Table("shelf_material")]
     class Shelf_Material
     {
-        /*
+        
         public Shelf_Material()
         {
             Shelfs = new HashSet<Shelf>();
         }
-        */
+        
         [Key]
         [Column(TypeName = "int(10)")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,9 +24,9 @@ namespace CodeFirstPracticeUpdates.Models
         [Column(TypeName = "varchar(25)")]
         //[Column(CreateFormate = "varchar(50) COLLATE NOCASE")]
         public string MaterialName { get; set; }
-
-        //[InverseProperty(nameof(Models.Shelf.Shelf_Material))]
-        //public virtual ICollection<Shelf> Shelfs { get; set; }
+        //nameof property allows auto update of names in case if change it later
+        [InverseProperty(nameof(Models.Shelf.Shelf_Material))]
+        public virtual ICollection<Shelf> Shelfs { get; set; }
     }
 
 }
