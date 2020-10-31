@@ -41,10 +41,22 @@ namespace CodeFirstPracticeUpdates.Models
         {
             modelBuilder.Entity<Shelf>(entity =>
             {
+                //create variable to hold FK name
+                string keyName = "FK_" + nameof(Shelf) +
+                    "_" + nameof(Shelf_Material);
                 //collation only Text fields not intiger fields
                 entity.Property(e => e.Name)
                 .HasCharSet("utf8mb4")
                 .HasCollation("utf8mb4_general_ci");
+
+                entity.HasIndex(e => e.ShelfMaterialID)
+                .HasName(keyName);
+
+                entity.HasOne(thisEntity => thisEntity.Shelf_Material)
+                .WithMany(parent => parent.Shelfs)
+                .HasForeignKey(thisEntity => thisEntity.ShelfMaterialID)
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName(keyName);
 
                 entity.HasData
                     (
