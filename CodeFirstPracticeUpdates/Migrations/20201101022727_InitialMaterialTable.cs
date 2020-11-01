@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CodeFirstPracticeUpdates.Migrations
 {
-    public partial class Shelf_MaterialTable : Migration
+    public partial class InitialMaterialTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,9 @@ namespace CodeFirstPracticeUpdates.Migrations
                 {
                     ID = table.Column<int>(type: "int(10)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    MaterialName = table.Column<string>(type: "varchar(25)", nullable: false)
+                    MaterialName = table.Column<string>(type: "varchar(25)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                        .Annotation("MySql:Collation", "utf8mb4_general_ci")
                 },
                 constraints: table =>
                 {
@@ -26,11 +28,10 @@ namespace CodeFirstPracticeUpdates.Migrations
                 {
                     ID = table.Column<int>(type: "int(10)", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "varchar(50)", nullable: false)
+                    Name = table.Column<string>(type: "varchar(50)", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
                         .Annotation("MySql:Collation", "utf8mb4_general_ci"),
-                    ShelfMaterialID = table.Column<int>(type: "int(10)", nullable: false),
-                    Shelfs = table.Column<int>(nullable: true)
+                    ShelfMaterialID = table.Column<int>(type: "int(10)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -44,15 +45,27 @@ namespace CodeFirstPracticeUpdates.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "shelfs",
-                columns: new[] { "ID", "Name", "ShelfMaterialID", "Shelfs" },
+                table: "shelf_material",
+                columns: new[] { "ID", "MaterialName" },
                 values: new object[,]
                 {
-                    { -1, "Item1", 0, null },
-                    { -2, "Item2", 0, null },
-                    { -3, "Item3", 0, null },
-                    { -4, "Item4", 0, null },
-                    { -5, "Item5", 0, null }
+                    { 1, "wooden" },
+                    { 2, "laminated" },
+                    { 3, "cork" },
+                    { 4, "steel" },
+                    { 5, "plastic" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "shelfs",
+                columns: new[] { "ID", "Name", "ShelfMaterialID" },
+                values: new object[,]
+                {
+                    { -1, "Item1", 1 },
+                    { -2, "Item2", 2 },
+                    { -3, "Item3", 3 },
+                    { -4, "Item4", 4 },
+                    { -5, "Item5", 5 }
                 });
 
             migrationBuilder.CreateIndex(

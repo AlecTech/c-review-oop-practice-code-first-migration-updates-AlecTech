@@ -20,13 +20,13 @@ namespace CodeFirstPracticeUpdates.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        [Required]
+        //[Required]
         [Column(TypeName = "varchar(25)")]
         //[Column(CreateFormate = "varchar(50) COLLATE NOCASE")]
         public string MaterialName { get; set; }
         //nameof property allows auto update of names in case if change it later
-        [InverseProperty(nameof(Models.Shelf.Shelf_Material))]
-        public virtual ICollection<Shelf> Shelfs { get; set; }
+        [InverseProperty(nameof(Models.Shelf.ShelfMaterial))]
+       public virtual ICollection<Shelf> Shelfs { get; set; }
     }
 
 }

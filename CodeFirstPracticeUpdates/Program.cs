@@ -12,13 +12,16 @@ namespace CodeFirstPracticeUpdates
             {
                 Console.Write("Please enter Name of the shelf:");
                 var name = Console.ReadLine();
+                Console.Write("Please enter Material Code (1-3):");
+
+                var materialName = Console.ReadLine();
 
                 if (db.Shelfs.Where(x => x.Name.ToUpper() == name.Trim().ToUpper()).Count() != 0)
                 {
                     throw new Exception("This item already present.");
                 }
 
-                var shelf = new Shelf { Name = name.Trim() };
+                var shelf = new Shelf { Name = name.Trim(), ShelfMaterialID = Int32.Parse(materialName.Trim()) };
                 db.Shelfs.Add(shelf);
                 db.SaveChanges();
             }
