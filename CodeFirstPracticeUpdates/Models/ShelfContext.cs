@@ -50,17 +50,17 @@ namespace CodeFirstPracticeUpdates.Models
               new Shelf_Material()
               {
                   ID = 1,
-                  MaterialName = "wooden"
+                  MaterialName = "wood"
               },
               new Shelf_Material()
               {
                   ID = 2,
-                  MaterialName = "laminated"
+                  MaterialName = "glass"
               },
               new Shelf_Material()
               {
                   ID = 3,
-                  MaterialName = "cork"
+                  MaterialName = "rubber"
               },
               new Shelf_Material()
               {

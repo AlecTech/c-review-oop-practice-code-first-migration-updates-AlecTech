@@ -19,19 +19,16 @@ namespace CodeFirstPracticeUpdates
                 {
                     throw new Exception("This item already present.");
                 }
-
                 //print out all options of the material type
                 using (ShelfContext context1 = new ShelfContext())
                 {
                     var materials = context1.Shelf_Material.Select(x => x.MaterialName).ToList();
-
                     // if "type of materials" object has 5 types it will loop 5 times.
                     foreach (var material in materials)
                     {   //print out row from shelf query Name and then look into Shelf_Material object and grab all categories that correlate with MaterialId 
                         Console.WriteLine($"-{material}");
                     }
                 }
-
                 //ex: enter plastic
                 Console.Write("Please choose type of material from given selection:");
                 var materialName = Console.ReadLine();             

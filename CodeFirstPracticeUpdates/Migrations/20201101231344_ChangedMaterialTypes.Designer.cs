@@ -2,14 +2,16 @@
 using CodeFirstPracticeUpdates.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CodeFirstPracticeUpdates.Migrations
 {
     [DbContext(typeof(ShelfContext))]
-    partial class ShelfContextModelSnapshot : ModelSnapshot
+    [Migration("20201101231344_ChangedMaterialTypes")]
+    partial class ChangedMaterialTypes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
